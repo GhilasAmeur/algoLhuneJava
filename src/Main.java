@@ -3,21 +3,21 @@
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println(verifierCaretBanque("2424"));
+        System.out.println(verifierCaretBanque("2424242424242423"));
 
     }
 
-    public static String verifierCaretBanque(String numero){
-
+    public static boolean verifierCaretBanque(String numero){
 
         String [] tableauDeChiffre = numero.split("");
 
         int tailleDeNumero = String.valueOf(numero).length();
         String nv_numero ="";
+        int somme = 0;
 
-//        if(tailleDeNumero< 16){
-//            return "false";
-//        }
+        if(tailleDeNumero< 16){
+            return false;
+        }
 
         if(tailleDeNumero % 2 == 0){
 
@@ -60,9 +60,12 @@ public class Main {
             }
 
         }
+        for (int i = 0; i < nv_numero.length(); i++) {
 
+            somme += Character.getNumericValue(nv_numero.charAt(i));
+        }
 
-return nv_numero;
+        return somme % 10 == 0;
 
     }
 }
